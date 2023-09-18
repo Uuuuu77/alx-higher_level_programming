@@ -33,16 +33,14 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """ 
-           Writes the JSON string to a file
-        """
-        file_name = f"{cls.__name__}.json"
+        """ Writes the JSON string to a file """
+        filename = f"{cls.__name__}.json"
         dict_list = []
         if list_objs is not None:
             for objs in list_objs:
                 dict_list.append(objs.to_dictionary())
-        with open(file_name, mode='w', encoding='UTF-8') as my_file:
-            my_file.write(cls.to_json_string(dict_list))
+        with open(filename, mode='w', encoding='UTF-8') as file:
+            file.write(cls.to_json_string(dict_list))
 
     @staticmethod
     def from_json_string(json_string):
@@ -67,10 +65,10 @@ class Base:
         """
            Returns a list of instances
         """
-        file_name = f"{cls.__name__}.json"
+        filename = f"{cls.__name__}.json"
         try:
-            with open(filename, encoding='UTF-8') as my_file:
-                dict_list = cls.from_json_string(my_file.read())
+            with open(filename, encoding='UTF-8') as file:
+                dict_list = cls.from_json_string(file.read())
         except IOError:
             return []
         instances = []
@@ -83,13 +81,13 @@ class Base:
         """
            Serializes class object to CSV
         """
-        file_name = f"{cls.__name__}.csv"
-        with open(file_name, 'w', newline='') as my_file:
+        filename = f"{cls.__name__}.csv"
+        with open(filename, 'w', newline='') as file:
             if cls.__name__ == "Rectangle":
                 field_names = ['id', 'width', 'height', 'x', 'y']
             elif cls.__name__ == "Square":
                 field_names = ['id', 'size', 'x', 'y']
-            writer = csv.DictWriter(my_file, field_names=field_names)
+            writer = csv.DictWriter(file, field_names=field_names)
             writer.writeheader()
             for objs in list_objs:
                 writer.writerow(objs.to_dictionary())
@@ -99,10 +97,10 @@ class Base:
         """
            Deserializes csv to class object
         """
-        file_name = f"{cls.__name__}.csv"
+        filename = f"{cls.__name__}.csv"
         dict_list = []
         try:
-            with open(file_name, newline='') as my_file:
+            with open(filename, newline='') as file:
                 reader = csv.DictReader(file)
                 for row in reader:
                     for var, val in row.items():
