@@ -5,7 +5,6 @@
 import json
 import csv
 
-
 class Base:
     """
        Class B ase of all classes
@@ -87,7 +86,7 @@ class Base:
                 field_names = ['id', 'width', 'height', 'x', 'y']
             elif cls.__name__ == "Square":
                 field_names = ['id', 'size', 'x', 'y']
-            writer = csv.DictWriter(file, field_names=field_names)
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
             writer.writeheader()
             for objs in list_objs:
                 writer.writerow(objs.to_dictionary())
