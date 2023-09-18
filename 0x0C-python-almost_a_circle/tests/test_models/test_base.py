@@ -10,7 +10,7 @@ import pycodestyle
 import os
 
 
-class TestBase(unittest.Testcase):
+class TestBase(unittest.TestCase):
     """ Testing my Base class """
     def test_doc(self):
         """ Testing for documentation """

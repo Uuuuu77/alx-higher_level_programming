@@ -42,11 +42,11 @@ class TestBase(unittest.TestCase):
 
     def test_subclass(self):
         """ Testing for subclass """
-         self.assertTrue(issubclass(Rectangle, Base))
+        self.assertTrue(issubclass(Rectangle, Base))
 
     def test_id(self):
         """ Testing for id """
-         self.assertEqual(self.r1.id, 1)
+        self.assertEqual(self.r1.id, 1)
         self.assertEqual(self.r2.id, 9)
         self.assertEqual(self.r3.id, 2)
 
@@ -71,7 +71,7 @@ class TestBase(unittest.TestCase):
 
     def test_validation_2(self):
         """ Testing for attribute validation """
-         with self.assertRaises(TypeError):
+        with self.assertRaises(TypeError):
             Rectangle("1", 2)
         with self.assertRaises(TypeError):
             Rectangle(1, "2")
@@ -90,7 +90,7 @@ class TestBase(unittest.TestCase):
 
     def test_less_excess_param(self):
         """ Testing when 0 or 1 or excess parameters passed """
-         with self.assertRaises(TypeError):
+        with self.assertRaises(TypeError):
             Rectangle(3)
         with self.assertRaises(TypeError):
             Rectangle(1, 2, 3, 4, 5, 6)
@@ -105,7 +105,7 @@ class TestBase(unittest.TestCase):
 
     def test_display(self):
         """ Testing printing of rectangle """
-         r2d = "\n\n\n\n ####\n ####\n ####\n ####\n"
+        r2d = "\n\n\n\n ####\n ####\n ####\n ####\n"
         f = io.StringIO()
         with redirect_stdout(f):
             self.r2.display()
@@ -113,7 +113,7 @@ class TestBase(unittest.TestCase):
 
     def test_display_1(self):
         """ Testing printing of rectangle """
-         r3d = "\n  ###\n  ###\n"
+        r3d = "\n  ###\n  ###\n"
         f = io.StringIO()
         with redirect_stdout(f):
             self.r3.display()
@@ -121,7 +121,7 @@ class TestBase(unittest.TestCase):
 
     def test_display_2(self):
         """ Testing printing of rectangle """
-         r7 = Rectangle(4, 4)
+        r7 = Rectangle(4, 4)
         r7d = "####\n####\n####\n####\n"
         f = io.StringIO()
         with redirect_stdout(f):
@@ -244,4 +244,3 @@ class TestBase(unittest.TestCase):
                              'height': 2, 'x': 3, 'y': 4})
         rs = '[Rectangle] (89) 3/4 - 1/2'
         self.assertEqual(str(r), rs)
-

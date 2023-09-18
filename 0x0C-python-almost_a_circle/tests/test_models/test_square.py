@@ -48,13 +48,13 @@ class TestBase(unittest.TestCase):
 
     def test_id(self):
         """ Testing for id """
-         self.assertEqual(self.s1.id, 11)
+        self.assertEqual(self.s1.id, 11)
         self.assertEqual(self.s2.id, 1)
         self.assertEqual(self.s3.id, 2)
 
     def test_validation(self):
         """ Testing for attribute validation """
-         with self.assertRaises(TypeError):
+        with self.assertRaises(TypeError):
             self.s1.size = '5'
         with self.assertRaises(ValueError):
             self.s1.size = -4
@@ -93,13 +93,13 @@ class TestBase(unittest.TestCase):
 
     def test_area(self):
         """ Testing the area of Square """
-         self.assertEqual(self.s1.area(), 100)
+        self.assertEqual(self.s1.area(), 100)
         self.assertEqual(self.s2.area(), 16)
         self.assertEqual(self.s3.area(), 9)
 
     def test_display(self):
         """ Testing of printing of Square """
-         s2d = "\n    ####\n    ####\n    ####\n    ####\n"
+        s2d = "\n    ####\n    ####\n    ####\n    ####\n"
         f = io.StringIO()
         with redirect_stdout(f):
             self.s2.display()
@@ -157,7 +157,7 @@ class TestBase(unittest.TestCase):
 
     def test_to_dictionary(self):
         """ Testing dictionary instances """
-         s1d = {'size': 10, 'x': 5, 'y': 2, 'id': 11}
+        s1d = {'size': 10, 'x': 5, 'y': 2, 'id': 11}
         self.assertDictEqual(self.s1.to_dictionary(), s1d)
         s2d = {'size': 4, 'x': 4, 'y': 1, 'id': 1}
         self.assertDictEqual(self.s2.to_dictionary(), s2d)
@@ -167,33 +167,33 @@ class TestBase(unittest.TestCase):
 
     def test_to_json_string(self):
         """ Testing conversion of dictionary to list of JSON string """
-         s1j = '[{"size": 10, "x": 5, "y": 2, "id": 11}]'
+        s1j = '[{"size": 10, "x": 5, "y": 2, "id": 11}]'
         js = Base.to_json_string([self.s1.to_dictionary()])
         self.assertEqual(js, s1j)
         self.assertIsInstance(js, str)
 
     def test_create(self):
         """ Testing for creation of instance using create """
-         r = Square.create(**{'id': 89})
+        r = Square.create(**{'id': 89})
         rs = '[Square] (89) 1/0 - 1'
         self.assertEqual(str(r), rs)
 
     def test_create_1(self):
         """  Testing for creation of instance using create """
-         r = Square.create(**{'id': 89, 'size': 1})
+        r = Square.create(**{'id': 89, 'size': 1})
         rs = '[Square] (89) 1/0 - 1'
         self.assertEqual(str(r), rs)
 
     def test_create_2(self):
         """ Testing for creation of instance using create """
-         r = Square.create(**{'id': 89, 'size': 1,
+        r = Square.create(**{'id': 89, 'size': 1,
                              'x': 2, 'y': 3})
         rs = '[Square] (89) 2/3 - 1'
         self.assertEqual(str(r), rs)
 
     def test_create_3(self):
         """ Testing for creation of instance using create """
-         r = Square.create(**{'id': 89, 'size': 1, 'x': 2})
+        r = Square.create(**{'id': 89, 'size': 1, 'x': 2})
         rs = '[Square] (89) 2/0 - 1'
         self.assertEqual(str(r), rs)
 
@@ -206,7 +206,7 @@ class TestBase(unittest.TestCase):
 
     def test_save_to_file_1(self):
         """ Testing of saving to JSON file """
-         Square.save_to_file([])
+        Square.save_to_file([])
         self.assertTrue(os.path.isfile('Square.json'))
         with open('Square.json') as file:
             self.assertEqual(file.read(), '[]')
@@ -221,6 +221,6 @@ class TestBase(unittest.TestCase):
 
     def test_load_from_file(self):
         """ Testing loading from file """
-          output = Square.load_from_file()
+        output = Square.load_from_file()
         for out in output:
             self.assertEqual(str(out), '[Square] (3) 0/0 - 1')
