@@ -11,5 +11,5 @@ if (myVar2) {
     console.log(square);
   }
 } else {
-    console.log('Missing size');
+  console.log('Missing size');
 }
