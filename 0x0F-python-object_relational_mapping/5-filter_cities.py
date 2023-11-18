@@ -17,7 +17,7 @@ if __name__ == '__main__':
     match = (argv[4],)
     cursor.execute(qry, match)
     cities = cursor.fetchall()
-    cityList =  ", ".join([city[0] for city in cities])
+    cityList = ", ".join([city[0] for city in cities])
     print(cityList)
 
     cursor.close()
