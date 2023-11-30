@@ -1,4 +1,3 @@
 #!/bin/bash
-# A bash script that ends a request to a URL passed as an argument,
-# and displays only the status code of the response.
+# A bash script that ends a request to a URL passed and displays status code.
 curl -so /dev/null -w "%{http_code}" "$1"
