@@ -10,15 +10,17 @@ fs.readFile(fileA, 'utf8', (errorA, contentA) => {
   if (errorA) {
     process.exit(1);
   }
+
+
 fs.readFile(fileB, 'utf8', (errorB, contentB) => {
-  if (errorB) {
-    process.exit(1);
-  }
-  const contentC = contentA + contentB;
-  fs.writeFile(fileC, contentC, 'utf8', (errorC) => {
-    if (errorC) {
+    if (errorB) {
       process.exit(1);
     }
+    const contentC = contentA + contentB;
+    fs.writeFile(fileC, contentC, 'utf8', (errorC) => {
+      if (errorC) {
+        process.exit(1);
+      }
+    });
   });
-});
 });
